@@ -38,4 +38,29 @@ regression_object.fit(X_train , y_train)
 # predicting Test Results
 y_pred = regression_object.predict(X_test)
 
+# building backward elimination
+
+import statsmodels.formula.api as sm
+X = np.append(arr = np.ones((50,1)).astype(int), values = X , axis = 1)
+
+X_optimal = X[:,:]
+regressor_object_OLS = sm.OLS(endog = y , exog = X_optimal).fit()
+regressor_object_OLS.summary()
+
+X_optimal = X[:,[0,1,3,4,5]]
+regressor_object_OLS = sm.OLS(endog = y , exog = X_optimal).fit()
+regressor_object_OLS.summary()
+
+X_optimal = X[:,[0,3,4,5]]
+regressor_object_OLS = sm.OLS(endog = y , exog = X_optimal).fit()
+regressor_object_OLS.summary()
+
+X_optimal = X[:,[0,3,5]]
+regressor_object_OLS = sm.OLS(endog = y , exog = X_optimal).fit()
+regressor_object_OLS.summary()
+
+X_optimal = X[:,[0,3]]
+regressor_object_OLS = sm.OLS(endog = y , exog = X_optimal).fit()
+regressor_object_OLS.summary()
+
 
